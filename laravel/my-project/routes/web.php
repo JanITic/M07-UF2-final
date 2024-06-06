@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EscolaControlador;
 use App\Http\Controllers\UsuariControlador;
 use App\Http\Controllers\ProfeControlador;
+//Recu 
+use App\Http\Controllers\ProductesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,3 +83,16 @@ Route::controller(ProfeControlador::class)->group(function () {
     // Ruta POST para subir un archivo relacionado con un profesor
     Route::post('/prof/pujar', 'pujar')->name('prof.pujar');
 });
+
+/************* examen recu *************/
+// ruta per la vista consulta
+Route::get('/consulta', function () {
+    return view('consulta');
+})->name('consulta');
+
+// ruta POST per fer la consulta de si el producte esta en el array
+Route::post('/consulta', [ProductesController::class, 'consulta'])->name('productes.consulta');
+// ruta GET per mostrar quan el producte si que esta
+Route::get('/trobat/{product_name}', [ProductesController::class, 'trobat'])->name('productes.trobat');
+// ruta GET per mostrar quan el producte no esta
+Route::get('/notrobat/{product_name}', [ProductesController::class, 'notrobat'])->name('productes.notrobat');

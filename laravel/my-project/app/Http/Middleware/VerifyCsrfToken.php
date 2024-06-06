@@ -22,5 +22,8 @@ class VerifyCsrfToken extends Middleware
         '/crearUsuari',
         '/signin',
         '/professor',
+        '/consulta',
+        '/trobat/{product_name}',
+        '/notrobat/{product_name}'
     ];
 }
